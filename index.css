@@ -1,0 +1,14 @@
+button {
+    width: 30px;
+    margin-right: 2px;
+}
+
+#center {
+    text-align: center;
+}
+
+#rand {
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+}

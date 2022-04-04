@@ -10,9 +10,15 @@ function getRandInt(max) {
 function calc() {
     buff = num;
     console.log(result);
+    display = "";
     for (let i = 0; i < result.length; i++) {
+        display += "[" + result[i] + "×" + multi_result[i] + "]";
         buff -= result[i] * multi_result[i];
     }
+    if (display == "") {
+        display = "[]";
+    }
+    document.getElementById('dart').textContent = display;
     return buff;
 }
 window.onload = function() {
@@ -35,9 +41,11 @@ window.onload = function() {
     const newBtn2 = document.createElement("button");
     const newBtn3 = document.createElement("button");
     const newBtn4 = document.createElement("button");
+    const newBtn5 = document.createElement("button");
     newBtn2.innerHTML = "×2"
     newBtn3.innerHTML = "×3"
     newBtn4.innerHTML = "←"
+    newBtn5.innerHTML = "×"
     newBtn2.onclick = () => {
         multi_result[multi_result.length - 1] = 2;
         numText.textContent = calc()
@@ -51,14 +59,22 @@ window.onload = function() {
         multi_result.pop();
         numText.textContent = calc()
     }
+    newBtn5.onclick = () => {
+        result = [];
+        multi_result = [];
+        numText.textContent = calc()
+    }
     newDiv.appendChild(newBtn2);
     newDiv.appendChild(newBtn3);
     newDiv.appendChild(newBtn4);
+    newDiv.appendChild(newBtn5);
     button_area.appendChild(newDiv);
 }
 
 document.querySelector('#rand').addEventListener('click', function() {
     result = []
+    multi_result = []
+    num = 0;
     radio = document.getElementsByName('out')
     dart = 0;
     for (let i = 0; i < radio.length; i++) {
