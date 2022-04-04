@@ -87,6 +87,7 @@ window.onload = function() {
 
     button_area.appendChild(newDiv);
     rand();
+    change_radio();
 }
 
 function rand() {
@@ -118,3 +119,28 @@ function rand() {
     document.getElementById("ans").innerHTML = display;
     calc();
 }
+
+function change_radio() {
+    radio = document.getElementsByName("out");
+    for (let i = 0; i < radio.length; i++) {
+        id = "radio" + i
+        label = document.getElementById(id);
+        if (radio.item(i).checked) {
+            label.style.color = "#cf4242";
+            label.style.textDecorationColor = "#cf4242";
+            label.style.textDecoration = "underline";
+        } else {
+            label.style.color = "#6b6b6b";
+            label.style.textDecoration = "none";
+        }
+    }
+}
+document.getElementById("radio0").addEventListener("click", function() {
+    change_radio();
+});
+document.getElementById("radio1").addEventListener("click", function() {
+    change_radio();
+});
+document.getElementById("radio2").addEventListener("click", function() {
+    change_radio();
+});

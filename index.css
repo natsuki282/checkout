@@ -2,13 +2,17 @@
     text-align: center;
 }
 
+h3 {
+    font-size: 60px;
+}
+
 #num {
-    font-size: 30px;
+    font-size: 100px;
 }
 
 #ans,
 #dart {
-    font-size: 18pt;
+    font-size: 30pt;
 }
 
 #button_area {
@@ -30,7 +34,7 @@
     /* 角丸       */
     border-radius: 5%;
     /* 文字サイズ */
-    font-size: 18pt;
+    font-size: 30pt;
     /* 文字位置   */
     text-align: center;
     /* カーソル   */
@@ -42,7 +46,18 @@
     /* 文字色     */
     color: #ffffff;
     /* 1行の高さ  */
-    line-height: 1em;
+    line-height: 3em;
     /* 枠の指定 */
     border: 1px solid #ffffff;
+}
+
+.radio {
+    display: none;
+}
+
+.radio_label {
+    font-size: 20pt;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: #6b6b6b;
 }
