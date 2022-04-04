@@ -22,11 +22,15 @@ function calc() {
     return buff;
 }
 window.onload = function() {
-    button_area = document.getElementById('result');
+    button_area = document.getElementById('button_area');
     for (let i = 0; i < 4; i++) {
         const newDiv = document.createElement("div");
+        newDiv.classList.add("div_button");
+
         for (let j = 0; j < 5; j++) {
-            const newBtn = document.createElement("button");
+            const newBtn = document.createElement("a");
+            newBtn.classList.add("button");
+
             newBtn.innerHTML = i * 5 + j + 1;
             newBtn.onclick = () => {
                 result.push(i * 5 + j + 1);
@@ -38,40 +42,47 @@ window.onload = function() {
         button_area.appendChild(newDiv);
     }
     const newDiv = document.createElement("div");
-    const newBtn2 = document.createElement("button");
-    const newBtn3 = document.createElement("button");
-    const newBtn4 = document.createElement("button");
-    const newBtn5 = document.createElement("button");
-    newBtn2.innerHTML = "×2"
-    newBtn3.innerHTML = "×3"
-    newBtn4.innerHTML = "←"
-    newBtn5.innerHTML = "×"
-    newBtn2.onclick = () => {
-        multi_result[multi_result.length - 1] = 2;
-        numText.textContent = calc()
+    newDiv.classList.add("div_button");
+
+    buttonText = ["×2", "×3", "←", "×", "RAND"];
+    for (let i = 0; i < buttonText.length; i++) {
+        const newBtn = document.createElement("a");
+        newBtn.innerHTML = buttonText[i];
+        newBtn.classList.add("button");
+        if (i == 0) {
+            newBtn.onclick = () => {
+                multi_result[multi_result.length - 1] = 2;
+                numText.textContent = calc()
+            }
+        } else if (i == 1) {
+            newBtn.onclick = () => {
+                multi_result[multi_result.length - 1] = 3;
+                numText.textContent = calc()
+            }
+        } else if (i == 2) {
+            newBtn.onclick = () => {
+                result.pop();
+                multi_result.pop();
+                numText.textContent = calc()
+            }
+        } else if (i == 3) {
+            newBtn.onclick = () => {
+                result = [];
+                multi_result = [];
+                numText.textContent = calc()
+            }
+        } else {
+            newBtn.onclick = () => {
+                rand();
+            }
+        }
+        newDiv.appendChild(newBtn);
     }
-    newBtn3.onclick = () => {
-        multi_result[multi_result.length - 1] = 3;
-        numText.textContent = calc()
-    }
-    newBtn4.onclick = () => {
-        result.pop();
-        multi_result.pop();
-        numText.textContent = calc()
-    }
-    newBtn5.onclick = () => {
-        result = [];
-        multi_result = [];
-        numText.textContent = calc()
-    }
-    newDiv.appendChild(newBtn2);
-    newDiv.appendChild(newBtn3);
-    newDiv.appendChild(newBtn4);
-    newDiv.appendChild(newBtn5);
+
     button_area.appendChild(newDiv);
 }
 
-document.querySelector('#rand').addEventListener('click', function() {
+function rand() {
     result = []
     multi_result = []
     num = 0;
@@ -98,4 +109,5 @@ document.querySelector('#rand').addEventListener('click', function() {
     }
     numText.innerHTML = num;
     document.getElementById("ans").innerHTML = display;
-});
+    calc();
+}

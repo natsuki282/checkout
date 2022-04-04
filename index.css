@@ -1,14 +1,38 @@
-button {
-    width: 30px;
-    margin-right: 2px;
-}
-
 #center {
     text-align: center;
 }
 
-#rand {
-    width: fit-content;
-    height: fit-content;
-    padding: 5px;
+#button_area {
+    min-width: fit-content;
+    max-width: 800px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.div_button {
+    display: flex;
+    justify-content: space-around;
+}
+
+.button {
+    flex-grow: 20%;
+    display: inline-block;
+    border-radius: 5%;
+    /* 角丸       */
+    font-size: 18pt;
+    /* 文字サイズ */
+    text-align: center;
+    /* 文字位置   */
+    cursor: pointer;
+    /* カーソル   */
+    padding: 12px 12px;
+    /* 余白       */
+    background: #436bb5;
+    /* 背景色     */
+    color: #ffffff;
+    /* 文字色     */
+    line-height: 1em;
+    /* 1行の高さ  */
+    border: 1px solid #ffffff;
+    /* 枠の指定 */
 }
