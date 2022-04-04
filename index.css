@@ -1,7 +1,7 @@
 button {
-    font-size: 25px;
-    width: 75px;
+    width: 30px;
     margin-right: 2px;
+    -webkit-appearance: none;
 }
 
 #center {
@@ -9,8 +9,8 @@ button {
 }
 
 #rand {
-    font-size: 30px;
     width: fit-content;
     height: fit-content;
-    padding: 15px;
+    padding: 10px;
+    -webkit-appearance: none;
 }
