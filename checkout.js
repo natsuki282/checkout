@@ -80,6 +80,7 @@ window.onload = function() {
     }
 
     button_area.appendChild(newDiv);
+    rand();
 }
 
 function rand() {

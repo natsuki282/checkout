@@ -11,11 +11,12 @@
 
 .div_button {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .button {
-    flex-grow: 20%;
+    flex-grow: 1;
+    width: 100%;
     display: inline-block;
     border-radius: 5%;
     /* 角丸       */
