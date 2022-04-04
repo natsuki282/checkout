@@ -9,16 +9,22 @@ function getRandInt(max) {
 
 function calc() {
     buff = num;
-    console.log(result);
     display = "";
     for (let i = 0; i < result.length; i++) {
         display += "[" + result[i] + "×" + multi_result[i] + "]";
         buff -= result[i] * multi_result[i];
+        if (buff <= 0) {
+            break;
+        }
     }
     if (display == "") {
         display = "[]";
     }
+    if (buff < 0) {
+        buff = "BUST";
+    }
     document.getElementById('dart').textContent = display;
+
     return buff;
 }
 window.onload = function() {

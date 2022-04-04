@@ -2,6 +2,12 @@
     text-align: center;
 }
 
+#num,
+#ans,
+#dart {
+    font-size: 18pt;
+}
+
 #button_area {
     min-width: fit-content;
     max-width: 800px;
@@ -18,22 +24,22 @@
     flex-grow: 1;
     width: 100%;
     display: inline-block;
-    border-radius: 5%;
     /* 角丸       */
-    font-size: 18pt;
+    border-radius: 5%;
     /* 文字サイズ */
-    text-align: center;
+    font-size: 18pt;
     /* 文字位置   */
-    cursor: pointer;
+    text-align: center;
     /* カーソル   */
-    padding: 12px 12px;
+    cursor: pointer;
     /* 余白       */
-    background: #436bb5;
+    padding: 12px 12px;
     /* 背景色     */
-    color: #ffffff;
+    background: #436bb5;
     /* 文字色     */
-    line-height: 1em;
+    color: #ffffff;
     /* 1行の高さ  */
-    border: 1px solid #ffffff;
+    line-height: 1em;
     /* 枠の指定 */
+    border: 1px solid #ffffff;
 }
