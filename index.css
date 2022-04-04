@@ -1,5 +1,6 @@
 button {
-    width: 30px;
+    font-size: 25px;
+    width: 75px;
     margin-right: 2px;
 }
 
@@ -8,7 +9,8 @@ button {
 }
 
 #rand {
+    font-size: 30px;
     width: fit-content;
     height: fit-content;
-    padding: 5px;
+    padding: 15px;
 }
