@@ -134,6 +134,7 @@ function change_radio() {
             label.style.textDecoration = "none";
         }
     }
+    rand();
 }
 document.getElementById("radio0").addEventListener("click", function() {
     change_radio();
