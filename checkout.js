@@ -11,22 +11,37 @@ function getRandInt(max) {
 
 function calc() {
     buff = num;
+    sum = 0;
     // TODO : 4本目ならラウンドを変える
-    if (result.length > 3) {
-        result = [];
-        multi_result = [];
-    } else {
-        for (let i = 0; i < result.length; i++) {
-            document.getElementById('rnd' + i).innerText = trans_multi(multi_result[i]) + result[i];
-            buff -= result[i] * multi_result[i];
-            if (buff <= 0) {
-                break;
-            }
+    if (result.length == 4) {
+        console.log(result);
+        console.log(multi_result);
+        for (let i = 0; i < 3; i++) {
+            console.log(sum);
+            sum += result[i] * multi_result[i];
+            document.getElementById('rnd' + i).innerText = "";
         }
-        if (buff < 0) {
-            buff = "BUST";
+        result.splice(0, 3);
+        multi_result.splice(0, 3);
+
+        document.getElementById('rst' + round.length).innerText = sum;
+        round.push(sum);
+        buff -= sum;
+
+    }
+
+    // 今のラウンドの点数表示
+    for (let i = 0; i < result.length; i++) {
+        document.getElementById('rnd' + i).innerText = trans_multi(multi_result[i]) + result[i];
+        buff -= result[i] * multi_result[i];
+        if (buff <= 0) {
+            break;
         }
     }
+    if (buff < 0) {
+        buff = "BUST";
+    }
+
 
     return buff;
 }
