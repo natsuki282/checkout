@@ -10,7 +10,8 @@ h3 {
     font-size: 100px;
 }
 
-#ans {
+#ans,
+#dart {
     display: flex;
     justify-content: center;
 }
@@ -24,8 +25,13 @@ h3 {
     width: 100px;
 }
 
-#dart {
-    font-size: 30pt;
+.round {
+    font-size: 40px;
+    margin: 5px;
+    padding: 10px 0px 10px 0px;
+    background-color: #e0e0e0;
+    height: 50px;
+    width: 150px;
 }
 
 #button_area {
@@ -45,8 +51,6 @@ h3 {
     flex-grow: 1;
     width: 100%;
     display: inline-block;
-    /* 角丸       */
-    border-radius: 5%;
     /* 文字サイズ */
     font-size: 30pt;
     /* 文字位置   */
@@ -55,14 +59,12 @@ h3 {
     cursor: pointer;
     /* 余白       */
     padding: 12px 12px;
-    /* 背景色     */
-    background: #436bb5;
     /* 文字色     */
-    color: #ffffff;
+    color: #000000;
     /* 1行の高さ  */
     line-height: 3em;
     /* 枠の指定 */
-    border: 1px solid #ffffff;
+    border: 1px solid #6b6b6b;
 }
 
 .check_out {

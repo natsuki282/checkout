@@ -11,20 +11,24 @@ function getRandInt(max) {
 function calc() {
     buff = num;
     display = "";
-    for (let i = 0; i < result.length; i++) {
-        display += "[" + result[i] + "×" + multi_result[i] + "]";
-        buff -= result[i] * multi_result[i];
-        if (buff <= 0) {
-            break;
+    console.log(multi_result);
+    // TODO : 4本目ならラウンドを変える
+    if (result.length > 3) {
+        result = [];
+        multi_result = [];
+    } else {
+        for (let i = 0; i < result.length; i++) {
+            console.log(multi_result[i]);
+            document.getElementById('rnd' + i).innerText = trans_multi(multi_result[i]) + result[i];
+            buff -= result[i] * multi_result[i];
+            if (buff <= 0) {
+                break;
+            }
+        }
+        if (buff < 0) {
+            buff = "BUST";
         }
     }
-    if (display == "") {
-        display = "[]";
-    }
-    if (buff < 0) {
-        buff = "BUST";
-    }
-    document.getElementById('dart').textContent = display;
 
     return buff;
 }
@@ -43,6 +47,7 @@ window.onload = function() {
                 result.push(i * 5 + j + 1);
                 multi_result.push(1)
                 numText.textContent = calc();
+                console.log(i * 5 + j + 1)
             }
             newDiv.appendChild(newBtn);
         }
@@ -96,7 +101,6 @@ function rand() {
     multi_result = []
     num = 0;
     dart = 3;
-    console.log(dart);
     display = "";
     for (let i = 0; i < dart; i++) {
         if (i == dart - 1) {
@@ -105,19 +109,22 @@ function rand() {
             multi = getRandInt(3);
         }
         main = getRandInt(20);
-        if (multi == 1) {
-            arr = "S";
-        } else if (multi == 2) {
-            arr = "D";
-        } else {
-            arr = "T";
-        }
-
-        document.getElementById("rec" + i).innerText = arr + main;
+        document.getElementById("rec" + i).innerText = trans_multi(multi) + main;
         num += main * multi
     }
     numText.innerHTML = num;
     calc();
+}
+
+function trans_multi(num) {
+    if (num == 1) {
+        arr = "S";
+    } else if (num == 2) {
+        arr = "D";
+    } else {
+        arr = "T";
+    }
+    return arr;
 }
 
 // Master out のチェックボックス
