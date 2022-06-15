@@ -51,13 +51,14 @@ h3 {
     border: 1px solid #ffffff;
 }
 
-.radio {
+.check_out {
     display: none;
 }
 
-.radio_label {
-    font-size: 20pt;
+#label_out {
+    font-size: 30pt;
     margin-right: 10px;
     margin-left: 10px;
     color: #6b6b6b;
+    user-select: none;
 }
