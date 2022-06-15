@@ -95,14 +95,7 @@ function rand() {
     result = []
     multi_result = []
     num = 0;
-    radio = document.getElementsByName('out')
-    dart = 0;
-    for (let i = 0; i < radio.length; i++) {
-        if (radio.item(i).checked) {
-            dart = radio.item(i).value;
-            break;
-        }
-    }
+    dart = 3;
     console.log(dart);
     display = "";
     for (let i = 0; i < dart; i++) {
@@ -112,15 +105,22 @@ function rand() {
             multi = getRandInt(3);
         }
         main = getRandInt(20);
+        if (multi == 1) {
+            arr = "S";
+        } else if (multi == 2) {
+            arr = "D";
+        } else {
+            arr = "T";
+        }
 
-        display += "<a>[" + main + " × " + multi + "]</a>";
+        document.getElementById("rec" + i).innerText = arr + main;
         num += main * multi
     }
     numText.innerHTML = num;
-    document.getElementById("ans").innerHTML = display;
     calc();
 }
 
+// Master out のチェックボックス
 function change_check() {
     label = document.getElementById("label_out");
     if (document.getElementById("checkbox").checked) {

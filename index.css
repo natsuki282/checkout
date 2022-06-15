@@ -10,7 +10,20 @@ h3 {
     font-size: 100px;
 }
 
-#ans,
+#ans {
+    display: flex;
+    justify-content: center;
+}
+
+.recommend {
+    font-size: 25px;
+    margin: 5px;
+    padding: 10px 0px 10px 0px;
+    border: 5px solid #fcf89a;
+    height: 30px;
+    width: 100px;
+}
+
 #dart {
     font-size: 30pt;
 }
@@ -25,6 +38,7 @@ h3 {
 .div_button {
     display: flex;
     justify-content: space-between;
+    user-select: none;
 }
 
 .button {
