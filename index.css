@@ -6,13 +6,87 @@ h3 {
     font-size: 60px;
 }
 
+#middle {
+    display: flex;
+    height: 200px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#message {
+    font-size: 50px;
+    color: #c40404;
+    margin: 20px 0px 20px 0px;
+    height: 60px;
+    display: block;
+}
+
 #num {
     font-size: 100px;
+    text-align: center;
+}
+
+.result {
+    text-align: left;
+}
+
+.rst {
+    width: 75px;
+    text-align: right;
+}
+
+.result_row {
+    margin-right: 80px;
+    display: inline-block;
+    width: fit-content;
+    border: solid #929292;
+    padding: 0px 10px 0px 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.rst,
+.result {
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.result_div {
+    text-align: right;
+    position: absolute;
+    right: 0;
 }
 
 #ans,
 #dart {
-    font-size: 30pt;
+    display: flex;
+    justify-content: center;
+}
+
+#ans {
+    margin-bottom: 40px;
+}
+
+.recommend {
+    font-size: 25px;
+    margin: 5px;
+    padding: 10px 0px 10px 0px;
+    border: 5px solid #fce092;
+    height: 30px;
+    width: 100px;
+}
+
+.round {
+    font-size: 40px;
+    margin: 5px;
+    padding: 10px 0px 10px 0px;
+    background-color: #dfdfdf;
+    height: 50px;
+    width: 150px;
 }
 
 #button_area {
@@ -25,14 +99,13 @@ h3 {
 .div_button {
     display: flex;
     justify-content: space-between;
+    user-select: none;
 }
 
 .button {
     flex-grow: 1;
     width: 100%;
     display: inline-block;
-    /* 角丸       */
-    border-radius: 5%;
     /* 文字サイズ */
     font-size: 30pt;
     /* 文字位置   */
@@ -41,23 +114,22 @@ h3 {
     cursor: pointer;
     /* 余白       */
     padding: 12px 12px;
-    /* 背景色     */
-    background: #436bb5;
     /* 文字色     */
-    color: #ffffff;
+    color: #000000;
     /* 1行の高さ  */
     line-height: 3em;
     /* 枠の指定 */
-    border: 1px solid #ffffff;
+    border: 1px solid #6b6b6b;
 }
 
-.radio {
+.check_out {
     display: none;
 }
 
-.radio_label {
-    font-size: 20pt;
+#label_out {
+    font-size: 30pt;
     margin-right: 10px;
     margin-left: 10px;
     color: #6b6b6b;
+    user-select: none;
 }
