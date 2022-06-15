@@ -1,6 +1,8 @@
+// TODO : ボタン押した時に勝手に追加されない仕様にしたい
 result = []
 multi_result = []
 round = []
+recommend = []
 numText = document.getElementById('num')
 message = document.getElementById('message')
 num = 0
@@ -10,48 +12,56 @@ function getRandInt(max) {
     return Math.floor(Math.random() * max) + 1;
 }
 
-function calc() {
-    buff = num;
+function display() {
     sum = 0;
-
     // 4本目ならラウンドを変える
-    if (result.length == 4) {
+    if (result.length >= 4) {
+        if (message.innerText != "") {
+            return;
+        }
         console.log(result);
         console.log(multi_result);
         for (let i = 0; i < 3; i++) {
-            console.log(sum);
             sum += result[i] * multi_result[i];
-            document.getElementById('rnd' + i).innerText = "";
         }
         result.splice(0, 3);
         multi_result.splice(0, 3);
-
-        document.getElementById('rst' + round.length).innerText = sum;
         round.push(sum);
-        buff -= sum;
-
     }
 
-    // 今のラウンドの点数表示
-    for (let i = 0; i < result.length; i++) {
-        document.getElementById('rnd' + i).innerText = trans_multi(multi_result[i]) + result[i];
-        buff -= result[i] * multi_result[i];
-        if (buff <= 0) {
-            break;
+    sum = 0;
+    for (let i = 0; i < 3; i++) {
+        if (round[i] == null) {
+            document.getElementById('rst' + i).innerText = "";
+        } else {
+            sum += round[i];
+            document.getElementById('rst' + i).innerText = round[i];
+        }
+        if (result[i] == null) {
+            document.getElementById('rnd' + i).innerText = "";
+        } else {
+            sum += result[i] * multi_result[i];
+            document.getElementById('rnd' + i).innerText = trans_multi(multi_result[i]) + result[i];
         }
     }
-    if (buff < 0) {
-        message.innerText = "BUST";
-    }
-    console.log(round)
-    console.log(result)
-        // 4ラウンドで追われなかったらラウンドオーバーにする
-    if (round.length == 3 && buff > 0 && result.length == 3) {
-        message.innerText = "ROUND OVER";
+    dif = num - sum;
+    numText.innerText = dif;
+    // TODO :リコメンドの修正
+    if (no_arrange.includes(dif)) {
+        for (let i = 0; i < 3; i++) {
+            document.getElementById('rec' + i).innerText = "-"
+        }
     }
 
-    return buff;
+    if (dif < 0) {
+        message.innerText = "BUST";
+    } else if (round.length == 3 && dif > 0 && result.length == 3) {
+        message.innerText = "ROUND OVER";
+    } else {
+        message.innerText = "";
+    }
 }
+
 window.onload = function() {
     button_area = document.getElementById('button_area');
     for (let i = 0; i < 4; i++) {
@@ -65,8 +75,8 @@ window.onload = function() {
             newBtn.innerHTML = i * 5 + j + 1;
             newBtn.onclick = () => {
                 result.push(i * 5 + j + 1);
-                multi_result.push(1)
-                numText.textContent = calc();
+                multi_result.push(1);
+                display();
                 console.log(i * 5 + j + 1)
             }
             newDiv.appendChild(newBtn);
@@ -83,25 +93,25 @@ window.onload = function() {
         newBtn.classList.add("button");
         if (i == 0) {
             newBtn.onclick = () => {
-                multi_result[multi_result.length - 1] = 2;
-                numText.textContent = calc()
+                multi_result[multi_result.length - 1] = 2;;
+                display();
             }
         } else if (i == 1) {
             newBtn.onclick = () => {
-                multi_result[multi_result.length - 1] = 3;
-                numText.textContent = calc()
+                multi_result[multi_result.length - 1] = 3;;
+                display();
             }
         } else if (i == 2) {
             newBtn.onclick = () => {
                 result.pop();
                 multi_result.pop();
-                numText.textContent = calc()
+                display();
             }
         } else if (i == 3) {
             newBtn.onclick = () => {
                 result = [];
-                multi_result = [];
-                numText.textContent = calc()
+                multi_result = [];;
+                display();
             }
         } else {
             newBtn.onclick = () => {
@@ -119,9 +129,9 @@ window.onload = function() {
 function rand() {
     result = []
     multi_result = []
+    round = []
     num = 0;
     dart = 3;
-    display = "";
     for (let i = 0; i < dart; i++) {
         if (i == dart - 1) {
             multi = getRandInt(2) + 1;
@@ -132,8 +142,7 @@ function rand() {
         document.getElementById("rec" + i).innerText = trans_multi(multi) + main;
         num += main * multi
     }
-    numText.innerHTML = num;
-    calc();
+    numText.innerHTML = num;;
 }
 
 function trans_multi(num) {
