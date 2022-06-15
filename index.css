@@ -6,8 +6,30 @@ h3 {
     font-size: 60px;
 }
 
+#middle {
+    display: flex;
+    height: 200px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
 #num {
     font-size: 100px;
+    text-align: center;
+}
+
+.result {
+    font-size: 25px;
+    text-align: left;
+    margin-left: 80px;
+}
+
+.result_div {
+    text-align: left;
+    position: absolute;
+    left: 0;
 }
 
 #ans,

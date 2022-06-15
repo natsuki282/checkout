@@ -1,5 +1,6 @@
 result = []
 multi_result = []
+round = []
 numText = document.getElementById('num')
 num = 0
 no_arrange = [163, 166, 169, 172, 173, 175, 176, 178, 179]
@@ -10,15 +11,12 @@ function getRandInt(max) {
 
 function calc() {
     buff = num;
-    display = "";
-    console.log(multi_result);
     // TODO : 4本目ならラウンドを変える
     if (result.length > 3) {
         result = [];
         multi_result = [];
     } else {
         for (let i = 0; i < result.length; i++) {
-            console.log(multi_result[i]);
             document.getElementById('rnd' + i).innerText = trans_multi(multi_result[i]) + result[i];
             buff -= result[i] * multi_result[i];
             if (buff <= 0) {
