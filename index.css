@@ -4,6 +4,7 @@
 
 h3 {
     font-size: 60px;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
@@ -19,7 +20,7 @@ h3 {
 #message {
     font-size: 50px;
     color: #c40404;
-    margin: 20px 0px 20px 0px;
+    margin: 10px 0px 20px 0px;
     height: 60px;
     display: block;
 }
