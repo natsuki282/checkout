@@ -42,8 +42,13 @@ function display() {
         if (round[i] == null) {
             document.getElementById('rnd' + i).innerText = "";
         } else {
+
             sum += round[i] * multi_round[i];
-            document.getElementById('rnd' + i).innerText = trans_multi(multi_round[i]) + round[i];
+            if (round[i] == 50) {
+                document.getElementById('rnd' + i).innerText = "BULL";
+            } else {
+                document.getElementById('rnd' + i).innerText = trans_multi(multi_round[i]) + round[i];
+            }
         }
     }
     dif = num - sum;
@@ -70,7 +75,29 @@ function display() {
     }
 }
 
+function recommend(num, darts) {
+    // 残り1本の時
+    if (darts == 1) {
+        // 60 以上はなし
+        if (num > 60) {
+            return 0, 0;
+        }
+        // シングル上がり
+        if (1 <= num <= 20) {
+            return num, 1;
+        }
+        // ダブル上がり
+        if (num % 2 == 0 && 1 <= num / 2 <= 20) {
+            return num / 2, 2;
+        }
+        // トリプル上がり
+        if (num % 3 == 0 && 1 <= num / 3 <= 20) {
+            return num / 3, 3;
+        }
+        return 0, 0;
+    }
 
+}
 
 function rand() {
     // 初期化
@@ -128,6 +155,9 @@ function push_multi_num(mul) {
     if (message.innerText == "CLEAR") {
         return;
     }
+    if (round[round.length - 1] == 50) {
+        return;
+    }
     multi_round[multi_round.length - 1] = mul;
 }
 
@@ -156,7 +186,7 @@ window.onload = function() {
     const newDiv = document.createElement("div");
     newDiv.classList.add("div_button");
 
-    buttonText = ["×2", "×3", "←", "×", "RAND"];
+    buttonText = ["×2", "×3", "BULL", "←", "×"];
     for (let i = 0; i < buttonText.length; i++) {
         const newBtn = document.createElement("a");
         newBtn.innerHTML = buttonText[i];
@@ -175,8 +205,15 @@ window.onload = function() {
                 display();
             }
         }
-        // ←
+        // BULL
         else if (i == 2) {
+            newBtn.onclick = () => {
+                push_normal_num(50, 1);
+                display();
+            }
+        }
+        // ←
+        else if (i == 3) {
             newBtn.onclick = () => {
                 round.pop();
                 multi_round.pop();
@@ -184,19 +221,14 @@ window.onload = function() {
             }
         }
         // ×
-        else if (i == 3) {
+        else if (i == 4) {
             newBtn.onclick = () => {
                 round = [];
                 multi_round = [];
                 display();
             }
         }
-        // RAND
-        else {
-            newBtn.onclick = () => {
-                rand();
-            }
-        }
+
         newDiv.appendChild(newBtn);
     }
 
@@ -204,3 +236,6 @@ window.onload = function() {
     rand();
     change_check();
 }
+document.getElementById('button_start').addEventListener('click', function() {
+    rand();
+})

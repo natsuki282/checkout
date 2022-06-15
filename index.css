@@ -1,9 +1,14 @@
 #center {
+    margin-top: 50px;
     text-align: center;
 }
 
-h3 {
-    font-size: 60px;
+#head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 40px;
 }
 
 #middle {
@@ -18,7 +23,7 @@ h3 {
 #message {
     font-size: 50px;
     color: #c40404;
-    margin: 20px 0px 20px 0px;
+    margin: 0px 0px 20px 0px;
     height: 60px;
     display: block;
 }
@@ -61,14 +66,16 @@ h3 {
     right: 0;
 }
 
+#button_start {
+    text-align: center;
+    position: absolute;
+    right: 0;
+}
+
 #ans,
 #dart {
     display: flex;
     justify-content: center;
-}
-
-#ans {
-    margin-bottom: 40px;
 }
 
 .recommend {
@@ -122,14 +129,22 @@ h3 {
     border: 1px solid #6b6b6b;
 }
 
+#button_start {
+    font-size: 25pt;
+    padding: 5px;
+    width: 130px;
+    background-color: #ebebeb;
+    margin-right: 80px;
+    border: 1px solid #6b6b6b;
+}
+
 .check_out {
     display: none;
 }
 
 #label_out {
-    font-size: 30pt;
-    margin-right: 10px;
-    margin-left: 10px;
+    font-size: 25pt;
+    margin-top: 10px;
     color: #6b6b6b;
     user-select: none;
 }
