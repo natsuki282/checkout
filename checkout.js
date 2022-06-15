@@ -2,6 +2,7 @@ result = []
 multi_result = []
 round = []
 numText = document.getElementById('num')
+message = document.getElementById('message')
 num = 0
 no_arrange = [163, 166, 169, 172, 173, 175, 176, 178, 179]
 
@@ -12,7 +13,8 @@ function getRandInt(max) {
 function calc() {
     buff = num;
     sum = 0;
-    // TODO : 4本目ならラウンドを変える
+
+    // 4本目ならラウンドを変える
     if (result.length == 4) {
         console.log(result);
         console.log(multi_result);
@@ -39,9 +41,14 @@ function calc() {
         }
     }
     if (buff < 0) {
-        buff = "BUST";
+        message.innerText = "BUST";
     }
-
+    console.log(round)
+    console.log(result)
+        // 4ラウンドで追われなかったらラウンドオーバーにする
+    if (round.length == 3 && buff > 0 && result.length == 3) {
+        message.innerText = "ROUND OVER";
+    }
 
     return buff;
 }
